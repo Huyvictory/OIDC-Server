@@ -1,3 +1,5 @@
+using OidcServer.Repository;
+
 namespace OidcServer;
 
 public class Program
@@ -8,6 +10,9 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+
+        builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
+        builder.Services.AddSingleton<ICodeItemRepository, CodeItemRepository>();
 
         var app = builder.Build();
 
